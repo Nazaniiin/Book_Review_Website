@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block headline %}
+    Contact Us
+{% endblock %}
+
+{% block body %}
+    <p>Do you have any questions? Let us know below: </p>
+
+    <div class="msg-container">
+        <form method="post">
+            <div class="form-group"><input class="form-control" type="text" name="name" placeholder="Your name"></div>
+            <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Your email "></div>
+            <div class="form-group">
+                <textarea class="form-control" name="message" rows="8" cols="60"></textarea>
+                <div class="form-group">
+                    <button type="submit" name ="submit" value="message" class="btn btn-primary review-button">
+                        Send Message
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>  
+{% endblock %}

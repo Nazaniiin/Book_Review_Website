@@ -1,0 +1,45 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <link rel="shortcut icon" href="/static/favicon.ico"/>
+        <title>Enz Book Review</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+    <body class="content">
+        <div class="button">
+            {% if session.get('logged_in') == True %}
+                <a class="btn btn-primary logout-button" href="/logout" role="button">Sign out</a>
+            {% else %}
+                <a class="btn btn-primary resigter-button" href="/account" role="button">Sign in/Register</a>   
+            {% endif %}
+        </div>
+        <hr class="line row">
+        <div class="row">
+            <div class="column left menu">
+                <h2 class="w3-container w3-tangerine w3-jumbo">Menu</h2>
+                <ul>
+                    <li class="menu-item"><a href="{{ url_for('index') }}">Home</a></li>
+                    <li class="menu-item"><a href="{{ url_for('user') }}">Account</a></li>
+                    <li class="menu-item"><a href="{{ url_for('contact') }}">Contact</a></li>
+                    <li class="menu-item"><a href="{{ url_for('about') }}">About</a></li>
+                </ul>
+            </div>
+            <div class="line-vert-left"></div>
+            <div id="headline" class="column middle">
+                <header>
+                    <h1 class="w3-container w3-tangerine w3-jumbo">{% block headline %}{% endblock %}</h1>
+                    <span class="full-text"><p class="headline-detail">{% block description %}{% endblock %}</p></span>
+                    <span class="short-text"><p class="headline-detail">{% block shortdesc %}{% endblock %}</p></span>
+                </header>
+                <p class="site-description">{% block body %}{% endblock %}</p>
+            </div>
+        </div>
+    </body>
+</html>
+

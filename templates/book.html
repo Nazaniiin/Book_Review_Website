@@ -1,0 +1,90 @@
+{% extends "layout.html" %}
+
+{% block headline %}
+    Book Information
+{% endblock %}
+
+{% block description %}
+{% endblock %}
+
+{% block shortdesc %}
+    A book review website
+{% endblock %}
+
+{% block body %}
+    {% if session.get('logged_in') == true %}
+        <div>
+            <p> Here's all the details from your book search. </p>
+        </div>
+
+        <div class="row">
+            <!-- A table for book information -->
+            <div class="column column-book-info">
+                <table id="table">
+                    {% if book_info %}
+                        <tr>
+                            <th colspan="2"> Book </th>
+                        </tr>
+                        {% for key in book_info[0] %}
+                            <tr>
+                                <th > {{ key }} </th>
+                                <td> {{ book_info[0][key] }} </td>
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
+                </table>
+            </div>
+            <!-- Book cover placeholder -->
+            <div id="boxshadow" class="column column-cover">
+                    <img src='{{ cover }}' />
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- A table for book reviews given by users -->
+            <table id="table" class="reviews-table">
+                {% if all_reviews %}
+                    <thead>
+                        <tr>
+                            {% for key in all_reviews[0] %}
+                                <th> {{ key }} </th>
+                            {% endfor %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for key in all_reviews %}
+                            <tr>
+                                {% for value in key %}
+                                    <td> {{ key[value] }} </td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                {% endif %}
+            </table>
+        </div>
+
+        <div class="row">
+            <!-- Review submission form -->
+            <div class="column column-review">
+                <h6>Write a review for this book:</h6>
+                <form method="post">
+                    <div class="form-group">
+                        <textarea class="form-control" name="review" rows="8" cols="60"></textarea>
+                        <div class="form-group">
+                            <h6>Give a rating (0-5):</h6>
+                            <input class="form-control rating" name="rating" type="number" min="0" max="5">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" name ="submit" value="review" class="btn btn-primary review-button">
+                                Submit Review
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    {% else %}
+        <p>Please sign in to your account to be able to search for books and write reviews.</p>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block headline %}
+    Account Information
+{% endblock %}
+
+{% block description %}
+    {% if session.get('logged_in') != True %}
+        Create a new account or sign in if you already have a username.
+    {% else %}
+        You are logged in. Navigate to homepage to start your search.
+    {% endif %}
+{% endblock %}
+
+{% block shortdesc %}
+    {% if session.get('logged_in') != True %}
+        Sign in using your account
+    {% else %}
+        You are logged in
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    {% if session.get('logged_in') != True %}
+        <div class="row">
+            <div class="column column-register">
+                <h4>Register</h4>
+
+                <form action="{{ url_for('user') }}" method="post">
+                    <div class="form-group"><input class="form-control" type="text" name="fname" placeholder="Name"></div>
+                    <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email"></div>
+                    <div class="form-group"><input class="form-control" type="text" name="username" placeholder="Username"></div>
+                    <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password"></div>
+                    <div class="form-group">
+                        <button type="submit" name="submit" value="register" class="btn btn-primary">
+                            Create account
+                        </button>
+                    </div>
+                </form>
+                
+            </div>
+            <div class="line-vert-left-sm"></div>
+            <div class="column column-signin">
+                <h4>Sign in</h4>
+
+                <form action="{{ url_for('user') }}" method="post">
+                    <div class="form-group"><input class="form-control" type="text" name="username" placeholder="Username"></div>
+                    <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password"></div>
+                    <div class="form-group">
+                        <button type="submit" name="submit" value="login" class="btn btn-primary">
+                            Login
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+

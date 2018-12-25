@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+
+{% block headline %}
+    {% if session.get('logged_in') == True %}
+        Hello, {{ name }}!
+    {% else %}
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    <p>Welcome to Enz book club, a place where we share our love for reading. 
+        Wander through thousands of books, and find your next pick.
+        Read what others have to say about their latest reading adventures and share yours as well.</p>
+
+    <p></p>
+    <div>
+        <h5 class="book-search">Search for books: </h5>
+    
+        <form action="{{ url_for('search') }}" method="post">
+            <div class="form-group">
+                <input class="form-control" type="text" name="search" placeholder="Search by title, author, or isbn">
+            </div>
+            <div class="form-group">
+                    <button type="submit" name="submit" value="search" class="btn btn-primary">
+                        Search
+                    </button>
+                </div>
+        </form>
+    </div>
+    
+    <div>
+        <table id="table">
+            {% if book_list %}
+            <thead>
+                <tr>
+                    {% for key in book_list[0] %}
+                        <th> {{ key }} </th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for key in book_list %}
+                <tr>
+                    {% for value in key %}
+                        {% if value == "isbn" %}
+                            <td>
+                                <a href="{{ url_for('book', isbn = key[value]) }}">{{ key[value] }}</a>
+                            </td>
+                        {% else %}
+                            <td> {{ key[value] }} </td>
+                        {% endif %}
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+            {% endif %}
+        </table>
+    </div>
+{% endblock %}

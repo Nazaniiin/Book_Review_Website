@@ -107,7 +107,7 @@ In you terminal run `flask run`, which will run the `application.py` set on your
 An error is given to users in the following situations:
 
 - If users enter invalid username and password
-- If users use a not unique username or email address
+- If users do not use unique username or email address
 - If users leave username, password, or email fields empty upon registration
 - If no result is found for user's book search
 - If users want to submit more than one review for a book

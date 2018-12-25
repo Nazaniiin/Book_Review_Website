@@ -33,7 +33,7 @@ In order to run this application, you need the following dependencies:
 - Flask 
 - SQLAlchemy
 - PostgreSQL database
-    - For this application we have used Heroku database. 
+    - For this application I have used Heroku database. 
       Navigate to https://www.heroku.com/, and create an account if you don’t already have one.
     - You are free to set up PostgreSQL database on your local computer.
 - Goodreads API

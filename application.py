@@ -102,19 +102,6 @@ def user():
     if request.method == 'GET':
         return render_template("account.html")
 
-@app.route("/home", methods=['GET','POST'])
-def home():
-    if request.method == 'GET':
-        if session.get('logged_in') == True:
-            name = session['username'].capitalize()
-            return render_template("home.html")
-        else:
-            error = "Please register or sign in."
-            return render_template("error.html", error=error)
-
-    if request.method == 'POST':
-        return render_template("home.html")
-
 @app.route("/search", methods=['POST'])
 def search():
     if request.method == 'POST':
@@ -203,7 +190,7 @@ def contact():
         new_message = Messages(name = request.form['name'],
                                email = request.form['email'],
                                message = request.form['message'])
-        
+
         db.add(new_message)
         db.commit()
     return render_template("contact.html")

@@ -71,17 +71,13 @@ In you terminal run `flask run`, which will run the `application.py` set on your
 - Logged in
 ![main-page-after-login](https://github.com/Nazaniiin/Book_Review_Website/blob/master/screenshots/main-page-after-login.png)
 
-`/home` (For logged in users)
-
-![home-page-after-login](https://github.com/Nazaniiin/Book_Review_Website/blob/master/screenshots/home-page-after-login.png)
-
 `/account`
 
 - Not logged in
 ![account-page-before-login](https://github.com/Nazaniiin/Book_Review_Website/blob/master/screenshots/account-page-before-login.png)
 
 - Logged in
-![account-page-after-login](https://github.com/Nazaniiin/Book_Review_Website/blob/master/screenshots/account-page-after-login.png)
+![account-page-after-login](https://github.com/Nazaniiin/Book_Review_Website/blob/master/screenshots/home-page-after-login.png)
 
 `/search` (For logged in users)
 

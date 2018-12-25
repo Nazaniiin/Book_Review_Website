@@ -15,8 +15,8 @@ In this project I built a book review website. I used Goodreads API to pull in t
 
 ## APIs
 
-- [Goodreads API]()
-- [OpenLibrary API]()
+- [Goodreads API](https://www.goodreads.com/api)
+- [OpenLibrary API](https://openlibrary.org/dev/docs/api/covers)
 
 ## Features
 In the website:
@@ -33,11 +33,12 @@ In order to run this application, you need the following dependencies:
 - Flask 
 - SQLAlchemy
 - PostgreSQL database
-    - For this application we have used Heroku database. Navigate to https://www.heroku.com/, 
-      and create an account if you don’t already have one.
+    - For this application we have used Heroku database. 
+      Navigate to https://www.heroku.com/, and create an account if you don’t already have one.
     - You are free to set up PostgreSQL database on your local computer.
 - Goodreads API
-    - You need to create a Goodreads account if you don't already have one. Navigate to https://www.goodreads.com/api/keys, and apply for an API key.
+    - You need to create a Goodreads account if you don't already have one.
+      Navigate to https://www.goodreads.com/api/keys, and apply for an API key.
 
 You also need to install a couple of other python packages. Those can be found and installed from `requirements.txt` file.
 
@@ -65,41 +66,41 @@ In you terminal run `flask run`, which will run the `application.py` set on your
 #### Homepage
 `/` 
 - Not logged in
-![alt text](https:)
+![main-page-before-login](https://github.com/Nazaniiin/Book_Review_Website/blob/master/screenshots/main-page-before-login.png)
 
 - Logged in
-![alt text](https:)
+![main-page-after-login](https://github.com/Nazaniiin/Book_Review_Website/blob/master/screenshots/main-page-after-login.png)
 
 `/home` (For logged in users)
 
-![alt text](https:)
+![home-page-after-login](https://github.com/Nazaniiin/Book_Review_Website/blob/master/screenshots/home-page-after-login.png)
 
 `/account`
 
 - Not logged in
-![alt text](https:)
+![account-page-before-login](https://github.com/Nazaniiin/Book_Review_Website/blob/master/screenshots/account-page-before-login.png)
 
 - Logged in
-![alt text](https:)
+![account-page-after-login](https://github.com/Nazaniiin/Book_Review_Website/blob/master/screenshots/account-page-after-login.png)
 
 `/search` (For logged in users)
 
 - After search
-![alt text](https:)
+![search-page-after-search](https://github.com/Nazaniiin/Book_Review_Website/blob/master/screenshots/search-page-after-search.png)
 
 `book/<isbn>` (For logged in users)
 
 - Before review submission
-![alt text](https:)
+![book-page-before-review-submission](https://github.com/Nazaniiin/Book_Review_Website/blob/master/screenshots/book-page-before-review-submission.png)
 
-- After review submission
-![alt text](https:)
+- After review submission (New review by Paul is added to the list of reviews)
+![book-page-after-review-submission](https://github.com/Nazaniiin/Book_Review_Website/blob/master/screenshots/book-page-after-review-submission.png)
 
 `/contact`
-![alt text](https:)
+![contact-page](https://github.com/Nazaniiin/Book_Review_Website/blob/master/screenshots/contact-page.png)
 
 `/about`
-![alt text](https:)
+![about-page](https://github.com/Nazaniiin/Book_Review_Website/blob/master/screenshots/about-page.png)
 
 ### Handling Special Cases in User Interactions
 

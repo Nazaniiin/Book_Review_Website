@@ -1,0 +1,247 @@
+.short-text { display: none; }
+
+@media only screen and (max-width: 600px) {
+    /* For mobile phones: */
+    .short-text {display: inline-block;}
+    .full-text { display: none; }
+    .left {display: none;}
+}
+
+body {
+    background-color: black;
+    overflow: auto;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    width: 100%;
+    height: 80%;
+    background-color: black
+}
+
+#boxshadow img {
+    border: 1px solid #131212;
+    box-shadow:10px 10px 10px rgb(77, 77, 77);
+}
+
+.content:before {
+    content: "";
+    position: fixed;
+    left: 0;
+    right: 0;
+    /* specify the stack order of the background image */
+    z-index: -1;
+    display: block;
+    background-image: url('book-bindings-bookcase-books-694740.jpg');
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: 1500px;
+    width: 1500px;
+    height: 800px;
+    filter: blur(7px);
+    filter: brightness(0.3);
+}
+
+.content {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    left: 0;
+    right: 0;
+    /* place the text in front of the background image */
+    z-index: 0;
+}
+
+a:hover{
+    color:rgb(241, 221, 202);
+}
+
+.line {
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 150px;
+    border-width: 1px;
+    border-color: rgb(44, 26, 0);
+} 
+
+.line-vert-left {
+    border-left: 1px solid rgb(44, 26, 0);
+    margin-top: 45px;
+    height: 500px;
+}
+
+.line-vert-left-sm {
+    border-left: 1px solid rgb(44, 26, 0);
+    margin-top: 45px;
+    height: 250px;
+}
+
+/* Create three unequal columns that floats next to each other */
+* {
+    box-sizing: border-box;
+}
+
+.row {
+    display: flex;
+}
+
+.column {
+    float: left;
+    padding: 10px;
+    margin-left: 30px;
+}
+
+.left {
+    margin-right: 20px;
+    width: 20%;
+}
+
+.middle {
+  width: 100%;
+  margin-right: 50px;
+}
+
+/*.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}*/
+/* end of creating unequal columns */
+
+/* columns for account page */
+.column-register {
+    width: 50%;
+    margin-right: 30px;
+}
+
+.column-signin {
+    width: 50%;
+    margin-right: 30px;
+}
+/* end of columns for account page */
+
+.column-search {
+    width: 90%;
+}
+
+.column-cover {
+    margin-top: 90px;
+    margin-left: 200px;
+}
+
+.column-book-info {
+    margin-left: 30px;
+}
+
+.column-review {
+    margin-top: 40px;
+}
+
+.menu {
+    color: rgb(224, 216, 139);
+    text-align: left;
+}
+
+.menu-item {
+    margin: 30px;
+    padding: 0;
+    list-style-type: none;
+}
+
+#headline {
+    color: rgb(224, 216, 139);
+}
+
+.headline-detail {
+    margin-top: 40px;
+}
+
+.site-description {
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+
+/* Use w3 library to change font of site title */
+.w3-tangerine {
+    font-family: "Tangerine", serif;
+    font-weight: bold;
+}
+
+.btn-primary, .btn, .btn-primary:hover, .btn-primary:link, .btn-primary:visited, .btn-primary:focus, .btn-primary:active {
+    background-color: rgb(175, 153, 136) !important;
+    border-color: rgb(175, 153, 136) !important;
+    outline-color: rgb(175, 153, 136) !important;
+    color: black;
+}
+
+.form-control {
+    background-color: rgb(230, 228, 228);
+}
+
+.rating {
+    margin-top: 10px;
+    width: 100px;
+}
+
+.login-button {
+    float: right;
+    text-align: right;
+    margin-top: 90px;
+    margin-right: 5px;
+}
+
+.resigter-button {
+    float: right;
+    text-align: right;
+    margin-top: 90px;
+    margin-right: 50px;
+}
+
+.logout-button {
+    float: right;
+    text-align: right;
+    margin-top: 90px;
+    margin-right: 50px;
+}
+
+.review-button {
+    float: left;
+    text-align: right;
+    margin-top: 20px;
+}
+
+.book-search {
+    margin-top: 50px;
+}
+
+.msg-container {
+    font-family: Arial;
+    border-radius: 2px;
+    padding: 30px;
+    width: 70%;
+}
+
+#table {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    margin-top: 50px;
+}
+
+#table td, #table th {
+    border: 1px solid rgb(175, 153, 136);
+    padding: 12px;
+}
+
+#table th {
+    text-transform: capitalize;
+    background-color: rgb(175, 153, 136);
+    color: black;
+    text-align: center;
+}
+
+.reviews-table {
+    width: 100%;
+}
+

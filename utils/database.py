@@ -23,6 +23,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
 db = SQLAlchemy(app)
 
 class Users(db.Model):
+    __tablename__ = "users"
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(50), unique=True, nullable=False)
     password = db.Column(db.String(50), nullable=False)
@@ -37,6 +38,7 @@ class Users(db.Model):
         self.fname = fname
 
 class Books(db.Model):
+    __tablename__ = "books"
     isbn = db.Column(db.String(15), primary_key=True)
     title = db.Column(db.String(30), nullable=True)
     author = db.Column(db.String(30), nullable=True)
@@ -45,6 +47,7 @@ class Books(db.Model):
 
 # We have a one-to-many relationship between this table and users and books table.
 class Reviews(db.Model):
+    __tablename__ = "reviews"
     id = db.Column(db.Integer, primary_key=True)
     book_id = db.Column(db.String(15), db.ForeignKey('books.isbn'))
     user_id = db.Column(db.String(50), db.ForeignKey('users.username'))
@@ -58,6 +61,7 @@ class Reviews(db.Model):
         self.rating = rating
 
 class Messages(db.Model):
+    __tablename__ = "messages"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), nullable=True)
     email = db.Column(db.String(120), unique=True, nullable=False)

@@ -22,7 +22,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
 db = SQLAlchemy(app)
 
-class Users(db.Model):
+class User(db.Model):
     __tablename__ = "users"
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(50), unique=True, nullable=False)
@@ -37,7 +37,7 @@ class Users(db.Model):
         self.email = email
         self.fname = fname
 
-class Books(db.Model):
+class Book(db.Model):
     __tablename__ = "books"
     isbn = db.Column(db.String(15), primary_key=True)
     title = db.Column(db.String(30), nullable=True)
@@ -46,7 +46,7 @@ class Books(db.Model):
     reviews = db.relationship('Reviews', backref='books', lazy=True)
 
 # We have a one-to-many relationship between this table and users and books table.
-class Reviews(db.Model):
+class Review(db.Model):
     __tablename__ = "reviews"
     id = db.Column(db.Integer, primary_key=True)
     book_id = db.Column(db.String(15), db.ForeignKey('books.isbn'))
@@ -60,7 +60,7 @@ class Reviews(db.Model):
         self.review = review
         self.rating = rating
 
-class Messages(db.Model):
+class Message(db.Model):
     __tablename__ = "messages"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), nullable=True)

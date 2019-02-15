@@ -23,7 +23,7 @@ Session(app)
 engine = create_engine(os.getenv("DATABASE_URL"))
 db = scoped_session(sessionmaker(bind=engine))
 
-from utils.database import Users, Reviews, Messages
+from utils.database import User, Review, Message
 
 @app.route("/")
 def index():
@@ -34,19 +34,19 @@ def user():
     if request.method == 'POST':
         # User registration
         if request.form.get('submit') == 'register':
-            new_user = Users(username = request.form['username'],
+            new_user = User(username = request.form['username'],
                              email = request.form['email'],
                              password = request.form['password'],
                              fname = request.form['fname'])
 
             # Check if username already exists
-            user_exists = db.query(Users.id).filter_by(username = new_user.username).scalar()
+            user_exists = db.query(User.id).filter_by(username = new_user.username).scalar()
             if user_exists is not None:
                 error = "Username is already taken."
                 return render_template("error.html", error=error)
                 
             # Check if email address is already used with another user
-            email_exists = db.query(Users.id).filter_by(email = new_user.email).scalar()
+            email_exists = db.query(User.id).filter_by(email = new_user.email).scalar()
             if email_exists is not None:
                 error = "There is an account associated with this email address."
                 return render_template("error.html", error=error)
@@ -155,7 +155,7 @@ def book(isbn):
             return render_template("error.html", error=error)
         
         app.logger.info("Adding a new review")
-        new_review = Reviews(book_id = book_isbn,
+        new_review = Review(book_id = book_isbn,
                              user_id = session['username'],
                              review = request.form['review'],
                              rating = request.form['rating'])
@@ -187,7 +187,7 @@ def logout():
 def contact():
     if request.form.get('submit') == 'message':
         app.logger.info("Sending a new message")
-        new_message = Messages(name = request.form['name'],
+        new_message = Message(name = request.form['name'],
                                email = request.form['email'],
                                message = request.form['message'])
 

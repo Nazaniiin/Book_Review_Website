@@ -1,14 +1,13 @@
 # Create all the tables needed in this project
 import os
 
-from flask import Flask
+from flask import Flask, session
 from flask_sqlalchemy import SQLAlchemy
 from flask_session import Session
 from sqlalchemy import create_engine
 
 app = Flask(__name__)
 
-# Check for environment variable
 if not os.getenv("DATABASE_URL"):
     raise RuntimeError("DATABASE_URL is not set")
 
@@ -29,7 +28,7 @@ class User(db.Model):
     password = db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     fname = db.Column(db.String(80), nullable=True)
-    reviews = db.relationship('Reviews', backref='users', lazy=True)
+    reviews = db.relationship('Review', backref='users', lazy=True)
 
     def __init__(self, username, password, email, fname):
         self.username = username
@@ -37,15 +36,18 @@ class User(db.Model):
         self.email = email
         self.fname = fname
 
+    def add_to_db(self):
+        db.session.add(self)
+        db.session.commit()
+
 class Book(db.Model):
     __tablename__ = "books"
     isbn = db.Column(db.String(15), primary_key=True)
     title = db.Column(db.String(30), nullable=True)
     author = db.Column(db.String(30), nullable=True)
     years = db.Column(db.String(10), nullable=True)
-    reviews = db.relationship('Reviews', backref='books', lazy=True)
+    reviews = db.relationship('Review', backref='books', lazy=True)
 
-# We have a one-to-many relationship between this table and users and books table.
 class Review(db.Model):
     __tablename__ = "reviews"
     id = db.Column(db.Integer, primary_key=True)
@@ -59,6 +61,10 @@ class Review(db.Model):
         self.user_id = user_id
         self.review = review
         self.rating = rating
+
+    def add_to_db(self):
+        db.session.add(self)
+        db.session.commit()
 
 class Message(db.Model):
     __tablename__ = "messages"
